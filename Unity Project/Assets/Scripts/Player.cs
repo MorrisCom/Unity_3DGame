@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Player : MonoBehaviour
     private Rigidbody rig;
     private Animator ani;
     private Transform target;
+    private LevelManager levelmanger;
+
     [Header("移動速度"),Range(1,300)]
     public float speed = 15;
     private void Start()
@@ -16,7 +19,18 @@ public class Player : MonoBehaviour
         rig = GetComponent<Rigidbody>();
         joystick = GameObject.Find("虛擬搖桿").GetComponent<Joystick>();
         target = GameObject.Find("目標").transform;
+        levelmanger = FindObjectOfType<LevelManager>();
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name=="傳送區域")
+        {
+            
+            levelmanger.StartCoroutine("Nextlevel");
+            
+        }
+    }
+    //固定更新:一秒50次、控制物理
     private void FixedUpdate()
     {
         Move();

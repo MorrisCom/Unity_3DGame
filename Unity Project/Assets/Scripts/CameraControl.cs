@@ -8,7 +8,7 @@ public class CameraControl : MonoBehaviour
     [Header("追蹤速度"),Range(1,10)]
     public float speed = 5;
     [Header("上方限制"),]
-    public float top = -6;
+    public float top = 0;
     [Header("下方限制"),]
     public float bottom = 6;
     #endregion
