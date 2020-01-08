@@ -6784,4 +6784,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   top: -6
-  bottom: 6
+  bottom: 10

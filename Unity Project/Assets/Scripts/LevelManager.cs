@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class LevelManager : MonoBehaviour
@@ -39,13 +40,18 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator Nextlevel()
     {
-        for (int i = 0; i < 255; i++)
+        AsyncOperation async = SceneManager.LoadSceneAsync("關卡2");
+
+        async.allowSceneActivation = false;
+        for (int i = 0; i < 100; i++)
         {
             imgcross.color += new Color(1, 1, 1, 0.01f);
             yield return new WaitForSeconds(0.01f);
         }
         //print("進入下一關");
-       
+
+        async.allowSceneActivation = true;
+
     }
 
 }
